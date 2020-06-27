@@ -30,9 +30,9 @@ This is core of Headless FAQ
     1. GraphQL
     1. Knex
 1. DB
-    1. PostgreSQL
+    1. PostgreSQL (+ Hasura)
 1. Deployment
-    1. Hasura for DB
+    1. Heroku for Hasura + PostgreSQL
     1. Google App Engine for main App
     1. Serverless + Google Cloud Functions
 
