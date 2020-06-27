@@ -10,3 +10,10 @@ Open Source Headless FAQ service for your site or Headless CMS.
 **Eng post:** [new.davidshekunts.com/headless-faq](https://new.davidshekunts.com/headless-faq/)
 
 **Ru post:** [davidshekunts.ru/2020/06/08/proekt-bezgolovyj-faq/](https://davidshekunts.ru/2020/06/08/proekt-bezgolovyj-faq/)
+
+# FAQ as a Service
+
+If you want to use this service on your site / mobile app, but doesn't have developers to
+integrate it, just text me a message and I will do it for a little donation.
+
+Email: mail@davidshekunts.com
