@@ -11,6 +11,11 @@ Open Source Headless FAQ service for your site or Headless CMS.
 
 **Ru post:** [davidshekunts.ru/2020/06/08/proekt-bezgolovyj-faq/](https://davidshekunts.ru/2020/06/08/proekt-bezgolovyj-faq/)
 
+# Domain Driven Design Light
+
+The main concept that is shown in this project is Domain Driven Design Light (DDDL) CMF that
+you can find here: https://github.com/Dionid/dddl
+
 # FAQ as a Service
 
 If you want to use this service on your site / mobile app, but doesn't have developers to
