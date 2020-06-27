@@ -1,0 +1,15 @@
+{
+  "name": "hfaq-hasura",
+  "version": "1.0.0",
+  "description": "This folder used to make migration in Hasura.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "hasura-cli": "^1.2.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
