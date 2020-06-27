@@ -6,7 +6,7 @@ This is core of Headless FAQ
 
 ## Dev
 
-1. Setup Hasura and Telegram bot
+1. Setup `Hasura` and `Telegram bot`
 1. Copy and set `.env_example > .env` & `.env_db_example > .env_db` (`MAIN_DB_CONNECTION_STRING` the same)
 1. Run `npm run faq:dev:gql`
 
@@ -18,7 +18,7 @@ This is core of Headless FAQ
 # Techs
 
 1. Architecture
-    1. Domain Driven Design Light (DDDL)
+    1. [Domain Driven Design Light (DDDL)](https://github.com/Dionid/dddl)
     1. Event Driven Architecture (EDA)
     1. CQRS + CQRS bus
     1. Repositories
