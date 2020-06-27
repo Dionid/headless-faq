@@ -1,0 +1,5 @@
+- name: Main
+  definition:
+    url: https://coursek.nw.r.appspot.com/graphql
+    timeout_seconds: 60
+    forward_client_headers: true

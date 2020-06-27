@@ -1,0 +1,132 @@
+- table:
+    schema: public
+    name: faq_answer
+  object_relationships:
+  - name: question
+    using:
+      foreign_key_constraint_on: question_id
+  insert_permissions:
+  - role: adminUser
+    permission:
+      check: {}
+      columns:
+      - published
+      - content
+      - created_at
+      - updated_at
+      - id
+      - question_id
+      - author
+      backend_only: false
+  select_permissions:
+  - role: adminUser
+    permission:
+      columns:
+      - published
+      - content
+      - created_at
+      - updated_at
+      - id
+      - question_id
+      - author
+      filter: {}
+      allow_aggregations: true
+  - role: anonymous
+    permission:
+      columns:
+      - author
+      - content
+      - id
+      - question_id
+      - updated_at
+      filter:
+        _or:
+        - published:
+            _eq: true
+      limit: 86
+      allow_aggregations: true
+  update_permissions:
+  - role: adminUser
+    permission:
+      columns:
+      - published
+      - content
+      - created_at
+      - updated_at
+      - id
+      - question_id
+      - author
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: adminUser
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: faq_question
+  array_relationships:
+  - name: answers
+    using:
+      foreign_key_constraint_on:
+        column: question_id
+        table:
+          schema: public
+          name: faq_answer
+  insert_permissions:
+  - role: adminUser
+    permission:
+      check: {}
+      columns:
+      - id
+      - created_at
+      - updated_at
+      - content
+      - additional
+      - meta
+      - creator
+      backend_only: false
+  select_permissions:
+  - role: adminUser
+    permission:
+      columns:
+      - additional
+      - meta
+      - content
+      - created_at
+      - updated_at
+      - id
+      - creator
+      filter: {}
+      allow_aggregations: true
+  - role: anonymous
+    permission:
+      columns:
+      - content
+      - creator
+      filter:
+        answers:
+          published:
+            _eq: true
+      limit: 100
+      allow_aggregations: true
+  update_permissions:
+  - role: adminUser
+    permission:
+      columns:
+      - additional
+      - meta
+      - content
+      - created_at
+      - updated_at
+      - id
+      - creator
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: adminUser
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: notifications_chat

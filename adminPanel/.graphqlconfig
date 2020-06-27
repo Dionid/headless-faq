@@ -1,0 +1,16 @@
+{
+  "name": "Hasura GQL for Frontend",
+  "schemaPath": "schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Endpoint": {
+        "url": "...",
+        "headers": {
+          "user-agent": "JS GraphQL",
+          "Authorization": "..."
+        },
+        "introspect": true
+      }
+    }
+  }
+}

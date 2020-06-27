@@ -1,0 +1,4 @@
+runtime: nodejs10
+entrypoint: npm run faq:start:gql
+env_variables:
+  NODE_PATH: "./dist"

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Widget</title>
+</head>
+<body>
+    <script>
+        const query = `\n            mutation CreateQuestion($input:QuestionByWidgetCommand!) {\n                createQuestionByWidget(command:$input) {\n                    message\n                    success\n                }\n            }\n        `;
+        async function ds_onform_submit() {
+            document.getElementById("ds_form").classList.add("loading");
+            const content = document.getElementById("ds_form_content").value;
+            const creator = document.getElementById("ds_form_author").value;
+            const canPublish = document.getElementById("ds_form_canPublish").checked;
+            if (!content) {
+                alert("Вопрос обязателен для заполнения");
+                document.getElementById("ds_form").classList.remove("loading");
+                return
+            }
+            try {
+                let response = await fetch('https://coursek.nw.r.appspot.com/graphql', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                        "Accept-Encoding": "gzip, deflate, br"
+                    },
+                    body: JSON.stringify({
+                        query,
+                        variables: {
+                          input: {
+                            content,
+                            creator,
+                            additional: {
+                              canPublish,
+                            }
+                          }
+                        }
+                    })
+                });
+                if (response.status !== 200) {
+                    alert("Произошла ошибка, попробуйте чуть позже :(")
+                    return
+                }
+                // alert("Ваш вопрос принят! Скоро отвечу!")
+                document.getElementById("ds_form").innerHTML = "<h2>Спасибо! Скоро отвечу!</h2>"
+            } catch (e) {
+                alert("Произошла ошибка, попробуйте чуть позже :(")
+            } finally {
+                document.getElementById("ds_form").classList.remove("loading");
+            }
+        }
+    </script>
+    <div>
+        <form onsubmit="ds_onform_submit(); return false" class="ds_form" id="ds_form">
+            <textarea class="ds_form__input" type="text" placeholder="Впишите сюда свой вопрос*" id="ds_form_content"></textarea>
+            <input class="ds_form__input" type="text" placeholder="Ваш email (опционально)" id="ds_form_author">
+            <span>
+                <input name="ds_form_canPublish" checked type="checkbox" id="ds_form_canPublish">
+                <label for="ds_form_canPublish" class="ds_form__label">Могу опубликовать в свой блоге?</label>
+            </span>
+            <button class="ds_form__button" id="sendButton" type="submit">Отправить</button>
+        </form>
+    </div>
+    <style>
+        input,
+        label,
+        select,
+        button,
+        textarea
+        {
+            margin:0;
+            border:0;
+            padding:0;
+            display:inline-block;
+            vertical-align:middle;
+            white-space:normal;
+            background:none;
+            line-height:1;
+
+            /* Browsers have different default ds_form fonts */
+            font-size:13px;
+            font-family:Arial;
+        }
+
+        /* Remove the stupid outer glow in Webkit */
+        input:focus
+        {
+            outline:0;
+        }
+
+        /* Box Sizing Reset
+        -----------------------------------------------*/
+
+        /* All of our custom controls should be what we expect them to be */
+        input,
+        textarea
+        {
+            -webkit-box-sizing:content-box;
+            -moz-box-sizing:content-box;
+            box-sizing:content-box;
+        }
+
+        /* These elements are usually rendered a certain way by the browser */
+        button,
+        input[type=reset],
+        input[type=button],
+        input[type=submit],
+        input[type=checkbox],
+        input[type=radio],
+        select
+        {
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing:border-box;
+            box-sizing:border-box;
+        }
+
+        /* Text Inputs
+        -----------------------------------------------*/
+
+        input[type=date],
+        input[type=datetime],
+        input[type=datetime-local],
+        input[type=email],
+        input[type=month],
+        input[type=number],
+        input[type=password],
+        input[type=range],
+        input[type=search],
+        input[type=tel],
+        input[type=text],
+        input[type=time],
+        input[type=url],
+        input[type=week]
+        {
+        }
+
+        /* Button Controls
+        -----------------------------------------------*/
+
+        input[type=checkbox],
+        input[type=radio]
+        {
+            width:13px;
+            height:13px;
+        }
+
+        /* File Uploads
+        -----------------------------------------------*/
+
+        input[type=file]
+        {
+
+        }
+
+        /* Search Input
+        -----------------------------------------------*/
+
+        /* Make webkit render the search input like a normal text field */
+        input[type=search]
+        {
+            -webkit-appearance:textfield;
+            -webkit-box-sizing:content-box;
+        }
+
+        /* Turn off the recent search for webkit. It adds about 15px padding on the left */
+        ::-webkit-search-decoration
+        {
+            display:none;
+        }
+
+        /* Buttons
+        -----------------------------------------------*/
+
+        button,
+        input[type="reset"],
+        input[type="button"],
+        input[type="submit"]
+        {
+            /* Fix IE7 display bug */
+            overflow:visible;
+            width:auto;
+        }
+
+        /* IE8 and FF freak out if this rule is within another selector */
+        ::-webkit-file-upload-button
+        {
+            padding:0;
+            border:0;
+            background:none;
+        }
+
+        /* Textarea
+        -----------------------------------------------*/
+
+        textarea
+        {
+            /* Move the label to the top */
+            vertical-align:top;
+
+            /* Turn off scroll bars in IE unless needed */
+            overflow:auto;
+        }
+
+        /* Selects
+        -----------------------------------------------*/
+
+        select
+        {
+
+        }
+
+        select[multiple]
+        {
+            /* Move the label to the top */
+            vertical-align:top;
+        }
+    </style>
+    <style>
+        #ds_form.loading {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        #ds_form {
+            display: flex;
+            flex-direction: column;
+            padding: 30px;
+            border-radius: 15px;
+            background-color: #fff;
+            font-size: 16px;
+            font-family: 'Lato', 'Roboto', 'Arial', sans-serif;
+            box-shadow: 0px 3px 10px 0px rgba(0,0,0,0.10);
+            /*border: 1px #eee solid;*/
+            color: #000;
+            opacity: 1;
+        }
+        #ds_form * {
+            box-sizing: border-box;
+            font-family: 'Lato', 'Roboto', 'Arial', sans-serif;
+        }
+        .ds_form__input{
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            color: #000;
+            background-color: #f1f1f1;
+        }
+        .ds_form__button{
+            padding: 15px;
+            border-radius: 50px;
+            transition: 0.2s;
+            margin-top: 20px;
+            font-size: 16px;
+            background-color: #e2e2e2;
+            cursor: pointer;
+        }
+        .ds_form__button:hover {
+            background-color: #000;
+            color: #ffffff;
+        }
+        .ds_form__label{
+            font-size: 16px;
+        }
+    </style>
+</body>
+</html>

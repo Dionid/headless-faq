@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type MutationResult {
+  success: Boolean!
+  message: String
+}
+
+type Query {
+  author: Int!
+}
+
+type Mutation {
+  createQuestionByWidget(command: QuestionByWidgetCommand!): MutationResult!
+}
+
+input QuestionByWidgetCommand {
+  content: String!
+  creator: String!
+  additional: QuestionByWidgetCommandAdditional
+  meta: JSONObject
+}
+
+input QuestionByWidgetCommandAdditional {
+  canPublish: Boolean!
+}
+
+"""JSONObject custom scalar type"""
+scalar JSONObject
