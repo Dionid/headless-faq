@@ -13,7 +13,7 @@ Open Source Headless FAQ service for your site or Headless CMS.
 
 # Domain Driven Design Light
 
-The main concept that is shown in this project is **Domain Driven Design Light (DDDL)** CMF that
+The main concept that is shown in this project is **Domain Driven Design Light (DDDL)** Library that
 you can find here: https://github.com/Dionid/dddl
 
 # FAQ as a Service
