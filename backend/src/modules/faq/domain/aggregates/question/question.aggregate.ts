@@ -1,10 +1,10 @@
-import { AggregateRoot, AggregateRootWithState } from "@dddl/domain"
+import { AggregateRoot, AggregateRootWithState } from "@dddl/core/dist/domain"
 import { QuestionId } from "modules/faq/domain/aggregates/question/question.id"
-import { Maybe, Modify, OmitAndModify } from "@dddl/common"
-import { EitherResultP, Result } from "@dddl/rop"
+import { Maybe, Modify, OmitAndModify } from "@dddl/core/dist/common"
+import { EitherResultP, Result } from "@dddl/core/dist/rop"
 import { FaqQuestion } from "apps/common/adapters/dal/sch/db-introspection"
 import { QuestionCreated } from "./events"
-import { InvalidDataErr } from "@dddl/errors"
+import { InvalidDataErr } from "@dddl/core/dist/errors"
 
 export type QuestionState = OmitAndModify<FaqQuestion, { id: any }, {}>
 

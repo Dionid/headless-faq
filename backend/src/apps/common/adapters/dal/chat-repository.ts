@@ -1,5 +1,5 @@
 import Knex from "knex"
-import { Specification } from "@dddl/dal"
+import { Specification } from "@dddl/core/dist/dal"
 import { NotificationsChat } from "apps/common/adapters/dal/sch/db-introspection"
 import {
   Chat,
@@ -13,8 +13,9 @@ import {
   KnexRepositoryBase,
   TX_CONTAINER_DI_TOKEN,
   TxContainer,
-} from "@dddl/dal-knex"
+} from "@dddl/knex/dist/dal"
 import { v4 } from "uuid"
+import { EitherResultP, Result } from "@dddl/core/dist/rop"
 
 class ChatSpecMapper {
   static map(
@@ -38,15 +39,15 @@ class ChatSpecMapper {
 }
 
 class ChatAggregateMapper {
-  static to(model: NotificationsChat): Chat {
-    return Chat.__createByRepository(new ChatId(model.id), model)
+  static async to(model: NotificationsChat): EitherResultP<Chat> {
+    return Result.ok(Chat.__createByRepository(new ChatId(model.id), model))
   }
 
-  static from(aggregate: Chat): NotificationsChat {
-    return {
+  static async from(aggregate: Chat): EitherResultP<NotificationsChat> {
+    return Result.ok({
       ...aggregate.state,
       id: aggregate.id.toValue() + "",
-    }
+    })
   }
 }
 

@@ -1,11 +1,11 @@
 import { Args, Field, Int, Mutation, ObjectType, Query, Resolver } from "@nestjs/graphql"
-import { UseCaseReqMeta } from "@dddl/usecase"
+import { UseCaseReqMeta } from "@dddl/core/dist/usecase"
 import { v4 } from "uuid"
-import { CQ_BUS_DI_TOKEN, CQBus } from "@dddl/cqrs"
+import { CQ_BUS_DI_TOKEN, CQBus } from "@dddl/core/dist/cqrs"
 import { Inject } from "@nestjs/common"
 import { QuestionByWidgetCommand } from "modules/faq/application/commands/question-by-widget/command"
-import { Result } from "@dddl/rop"
-import { CriticalErr, InvalidDataErr, PublicErr } from "@dddl/errors"
+import { Result } from "@dddl/core/dist/rop"
+import { CriticalErr, InvalidDataErr, PublicErr } from "@dddl/core/dist/errors"
 
 @ObjectType()
 class MutationResult {

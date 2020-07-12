@@ -1,8 +1,8 @@
-import { AsyncEventHandler, EventRequest, SyncEventHandler } from "@dddl/eda"
+import { AsyncEventHandler, EventRequest, SyncEventHandler } from "@dddl/core/dist/eda"
 import { WidgetQuestionCreated } from "modules/faq/application/events"
 import { Inject } from "typedi"
-import { CQ_BUS_DI_TOKEN, CQBus } from "@dddl/cqrs"
-import { EitherResultP } from "@dddl/rop"
+import { CQ_BUS_DI_TOKEN, CQBus } from "@dddl/core/dist/cqrs"
+import { EitherResultP } from "@dddl/core/dist/rop"
 import { SendNotificationAboutQuestionToAdminCommand } from "modules/notification/application/commands/send-notification-about-question-to-admin/command"
 
 export class OnWidgetQuestionCreatedAsync extends AsyncEventHandler<

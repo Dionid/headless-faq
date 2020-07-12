@@ -1,5 +1,5 @@
 import { Question } from "modules/faq/domain/aggregates/question/question.aggregate"
-import { EitherResultP, Result } from "@dddl/rop"
+import { EitherResultP, Result } from "@dddl/core/dist/rop"
 import Telegraf from "telegraf"
 import { session } from "telegraf"
 import {
@@ -11,7 +11,7 @@ import { TelegrafContext } from "telegraf/typings/context"
 import { Chat } from "modules/notification/domain/aggregates/chat/chat.aggregate"
 import { ChatId } from "modules/notification/domain/aggregates/chat/chat.id"
 import { v4 } from "uuid"
-import { NotFoundErr, UnauthorizedErr } from "@dddl/errors"
+import { NotFoundErr, UnauthorizedErr } from "@dddl/core/dist/errors"
 
 export class TgService {
   constructor(

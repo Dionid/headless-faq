@@ -1,13 +1,13 @@
-import { CommandHandler, CommandRequest } from "@dddl/cqrs"
+import { CommandHandler, CommandRequest } from "@dddl/core/dist/cqrs"
 import {
   QUESTION_REPOSITORY_DI_TOKEN,
   QuestionRepository,
 } from "modules/faq/domain/repository"
-import { EitherResultP, Result } from "@dddl/rop"
+import { EitherResultP, Result } from "@dddl/core/dist/rop"
 import { QuestionId } from "modules/faq/domain/aggregates/question/question.id"
 import { Question } from "modules/faq/domain/aggregates/question/question.aggregate"
 import { Inject } from "typedi"
-import { EVENT_BUS_DI_TOKEN, EventBus } from "@dddl/eda"
+import { EVENT_BUS_DI_TOKEN, EventBus } from "@dddl/core/dist/eda"
 import { WidgetQuestionCreated } from "modules/faq/application/events"
 import { v4 } from "uuid"
 import { QuestionByWidgetCommand } from "modules/faq/application/commands/question-by-widget/command"

@@ -7,16 +7,16 @@ import {
   ASYNC_EVENT_BUS_PROVIDER_DI_TOKEN,
   EventBusProvider,
   SYNC_EVENT_BUS_PROVIDER_DI_TOKEN,
-} from "@dddl/eda"
-import { CQ_BUS_DI_TOKEN } from "@dddl/cqrs"
-import { EVENT_BUS_DI_TOKEN } from "@dddl/eda"
+} from "@dddl/core/dist/eda"
+import { CQ_BUS_DI_TOKEN } from "@dddl/core/dist/cqrs"
+import { EVENT_BUS_DI_TOKEN } from "@dddl/core/dist/eda"
 import {
   QUESTION_REPOSITORY_DI_TOKEN,
   QuestionRepository as IQuestionRepository,
 } from "modules/faq/domain/repository"
 import { QuestionRepository } from "apps/common/adapters/dal/question-repository"
 import { QuestionByWidgetUserAPI } from "modules/faq/export/userApi"
-import { knexSnakeCaseMappers } from "@dddl/dal-knex"
+import { knexSnakeCaseMappers } from "@dddl/knex/dist/dal"
 import { NestFactory } from "@nestjs/core"
 import { initOrchestratorService } from "modules/orchestrator/export"
 import { QuestionByWidgetCommand } from "modules/faq/application/commands/question-by-widget/command"
@@ -34,15 +34,15 @@ import {
   KNEX_CONNECTION_DI_TOKEN,
   TX_CONTAINER_DI_TOKEN,
   TxContainer,
-} from "@dddl/dal-knex"
-import { EventBusInMemoryProvider } from "@dddl/eda-inmemory"
+} from "@dddl/knex/dist/dal"
+import { EventBusInMemoryProvider } from "@dddl/core/dist/eda-inmemory"
 import { ValidationPipe } from "@nestjs/common"
 import * as winston from "winston"
-import { CQBus } from "@dddl/cqrs-inmemory"
+import { CQBus } from "@dddl/core/dist/cqrs-inmemory"
 import { InitAppModule } from "apps/main-gql/adapters/api"
 import { format } from "winston"
-import { LOGGER_DI_TOKEN } from "@dddl/logger"
-import { EventBusPublisher } from "@dddl/eda"
+import { LOGGER_DI_TOKEN } from "@dddl/core/dist/logger"
+import { EventBusPublisher } from "@dddl/core/dist/eda"
 import {
   AsyncEventBusProviderSetMetaDecorator,
   AsyncEventBusProviderTransactionDecorator,
@@ -50,8 +50,8 @@ import {
   SyncEventBusProviderSetMetaDecorator,
   SyncEventBusProviderTransactionDecorator,
   ValidateRequestDecorator,
-} from "@dddl/usecase-decorators"
-import { KnexTransactionDecorator } from "@dddl/usecase-decorators-knex"
+} from "@dddl/core/dist/usecase-decorators"
+import { KnexTransactionDecorator } from "@dddl/knex/dist/usecase-decorators"
 
 export async function main() {
   // ENV

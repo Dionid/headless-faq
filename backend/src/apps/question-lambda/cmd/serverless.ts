@@ -1,5 +1,5 @@
 import { setup } from "apps/question-lambda/cmd/app"
-import { UseCaseReqMeta } from "@dddl/usecase"
+import { UseCaseReqMeta } from "@dddl/core/dist/usecase"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
 import { QuestionByWidgetCommand } from "modules/faq/application/commands/question-by-widget/command"
 

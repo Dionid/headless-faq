@@ -1,4 +1,4 @@
-import { Command } from "@dddl/cqrs"
+import { Command } from "@dddl/core/dist/cqrs"
 import { IsNotEmpty, IsString } from "class-validator"
 import { QuestionId } from "modules/faq/domain/aggregates/question/question.id"
 

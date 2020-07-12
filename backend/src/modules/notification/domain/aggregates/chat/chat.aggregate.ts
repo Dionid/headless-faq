@@ -1,5 +1,5 @@
-import { OmitAndModify } from "@dddl/common"
-import { AggregateRootWithState } from "@dddl/domain"
+import { OmitAndModify } from "@dddl/core/dist/common"
+import { AggregateRootWithState } from "@dddl/core/dist/domain"
 import { ChatId } from "modules/notification/domain/aggregates/chat/chat.id"
 import { NotificationsChat } from "apps/common/adapters/dal/sch/db-introspection"
 

@@ -2,11 +2,11 @@ import "reflect-metadata"
 import {
   ASYNC_EVENT_BUS_PROVIDER_DI_TOKEN,
   SYNC_EVENT_BUS_PROVIDER_DI_TOKEN,
-} from "@dddl/eda"
-import { CQBus } from "@dddl/cqrs-inmemory"
+} from "@dddl/core/dist/eda"
+import { CQBus } from "@dddl/core/dist/cqrs-inmemory"
 import { Container } from "typedi"
-import { CQ_BUS_DI_TOKEN } from "@dddl/cqrs"
-import { EVENT_BUS_DI_TOKEN } from "@dddl/eda"
+import { CQ_BUS_DI_TOKEN } from "@dddl/core/dist/cqrs"
+import { EVENT_BUS_DI_TOKEN } from "@dddl/core/dist/eda"
 import {
   QUESTION_REPOSITORY_DI_TOKEN,
   QuestionRepository as IQuestionRepository,
@@ -16,13 +16,13 @@ import { v4 } from "uuid"
 import knex from "knex"
 import dotenv from "dotenv"
 import { QuestionByWidgetUserAPI } from "modules/faq/export/userApi"
-import { knexSnakeCaseMappers } from "@dddl/dal-knex"
+import { knexSnakeCaseMappers } from "@dddl/knex/dist/dal"
 import { QuestionByWidgetCommand } from "modules/faq/application/commands/question-by-widget/command"
-import { TxContainer } from "@dddl/dal-knex"
-import { EventBusInMemoryProvider } from "@dddl/eda-inmemory"
+import { TxContainer } from "@dddl/knex/dist/dal"
+import { EventBusInMemoryProvider } from "@dddl/core/dist/eda-inmemory"
 import * as winston from "winston"
-import { LOGGER_DI_TOKEN } from "@dddl/logger"
-import { EventBusPublisher } from "@dddl/eda"
+import { LOGGER_DI_TOKEN } from "@dddl/core/dist/logger"
+import { EventBusPublisher } from "@dddl/core/dist/eda"
 
 export async function setup(connectionString: string): Promise<CQBus> {
   // ENV

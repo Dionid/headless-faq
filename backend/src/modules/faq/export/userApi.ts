@@ -1,6 +1,6 @@
 import { Service } from "typedi"
-import { CommandRequest } from "@dddl/cqrs"
-import { EitherResultP } from "@dddl/rop"
+import { CommandRequest } from "@dddl/core/dist/cqrs"
+import { EitherResultP } from "@dddl/core/dist/rop"
 import { QuestionByWidgetCommand } from "modules/faq/application/commands/question-by-widget/command"
 import { QuestionByWidget } from "modules/faq/application/commands/question-by-widget"
 

@@ -1,11 +1,11 @@
-import { EitherResultP, Result } from "@dddl/rop"
+import { EitherResultP, Result } from "@dddl/core/dist/rop"
 import {
   QUESTION_REPOSITORY_DI_TOKEN,
   QuestionRepository,
 } from "modules/faq/domain/repository"
 import { Question } from "modules/faq/domain/aggregates/question/question.aggregate"
 import { Inject } from "typedi"
-import { CommandHandler, CommandRequest } from "@dddl/cqrs"
+import { CommandHandler, CommandRequest } from "@dddl/core/dist/cqrs"
 import { SendNotificationAboutQuestionToAdminCommand } from "modules/notification/application/commands/send-notification-about-question-to-admin/command"
 
 export interface NotificationSender {

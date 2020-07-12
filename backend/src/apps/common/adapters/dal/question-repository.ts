@@ -11,9 +11,10 @@ import {
   KnexRepositoryBase,
   TX_CONTAINER_DI_TOKEN,
   TxContainer,
-} from "@dddl/dal-knex"
-import { Specification } from "@dddl/dal"
+} from "@dddl/knex/dist/dal"
+import { Specification } from "@dddl/core/dist/dal"
 import { v4 } from "uuid"
+import { EitherResultP, Result } from "@dddl/core/dist/rop"
 
 class QuestionSpecMapper {
   static map(
@@ -25,15 +26,15 @@ class QuestionSpecMapper {
 }
 
 class QuestionAggregateMapper {
-  static to(model: FaqQuestion): Question {
-    return Question.__createByRepository(new QuestionId(model.id), model)
+  static async to(model: FaqQuestion): EitherResultP<Question> {
+    return Result.ok(Question.__createByRepository(new QuestionId(model.id), model))
   }
 
-  static from(aggregate: Question): FaqQuestion {
-    return {
+  static async from(aggregate: Question): EitherResultP<FaqQuestion> {
+    return Result.ok({
       ...aggregate.state,
       id: aggregate.id.toValue() + "",
-    }
+    })
   }
 }
 

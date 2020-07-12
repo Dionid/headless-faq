@@ -1,4 +1,4 @@
-import { Repository, Specification } from "@dddl/dal"
+import { Repository, Specification } from "@dddl/core/dist/dal"
 import { Chat } from "modules/notification/domain/aggregates/chat/chat.aggregate"
 
 export class AllAdminChats extends Specification<Chat> {}

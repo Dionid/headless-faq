@@ -1,4 +1,4 @@
-import { Command } from "@dddl/cqrs"
+import { Command } from "@dddl/core/dist/cqrs"
 import { IsNotEmpty, IsString, IsUUID } from "class-validator"
 import { Field, InputType } from "@nestjs/graphql"
 import { JSONObject } from "apps/common/utils/scalars"

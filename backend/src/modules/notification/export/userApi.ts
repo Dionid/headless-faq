@@ -1,6 +1,6 @@
 import { Service } from "typedi"
-import { CommandRequest } from "@dddl/cqrs"
-import { EitherResultP } from "@dddl/rop"
+import { CommandRequest } from "@dddl/core/dist/cqrs"
+import { EitherResultP } from "@dddl/core/dist/rop"
 import { SendNotificationAboutQuestionToAdmin } from "modules/notification/application/commands/send-notification-about-question-to-admin"
 import { SendNotificationAboutQuestionToAdminCommand } from "modules/notification/application/commands/send-notification-about-question-to-admin/command"
 

@@ -1,7 +1,7 @@
 import { Module, Scope } from "@nestjs/common"
 import { GraphQLModule } from "@nestjs/graphql"
 import { MainResolver } from "./resolvers"
-import { CQ_BUS_DI_TOKEN, CQBus } from "@dddl/cqrs"
+import { CQ_BUS_DI_TOKEN, CQBus } from "@dddl/core/dist/cqrs"
 import { JSONObjectScalar } from "apps/common/utils/scalars"
 import * as os from "os"
 import * as path from "path"
